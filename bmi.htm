@@ -1,0 +1,215 @@
+
+<html>
+<head>
+<title>Evelijn - Voeding en Huishouding</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="evelijn.css" type="text/css">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<script language="javascript">
+var lengtekwad = 0
+var onaf = 0
+
+// Helperfuncties
+function roundTo(value, decimals = 1) {
+  const factor = 10 ** decimals;
+  return Math.round(value * factor) / factor;
+}
+
+function formatBE(value, decimals = 1) {
+  if (typeof value !== 'number' || !isFinite(value)) return '';
+  return value.toLocaleString('nl-BE', {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals
+  });
+}
+
+function gewicht_bekijken()
+{
+lengtetotaal = document.index.lengtedec.value / 100
+lengtetotaal2 = lengtetotaal + (document.index.lengte.value * 1)
+
+if ((lengtetotaal2 < 0.60)||(lengtetotaal2 > 2.20))
+{alert("Voer geldige waarden in.");
+document.index.reset(); 
+return }
+
+else {
+
+lengtekwad = lengtetotaal2 * lengtetotaal2
+gewichttotaal = document.index.gewichtdec.value / 10
+gewichttotaal2 = gewichttotaal + (document.index.gewicht.value * 1)
+
+if ((gewichttotaal2 < 17)||(lengtetotaal2 > 200))
+{alert("Voer geldige waarden in.");
+document.index.reset(); 
+return }
+
+else {
+
+// BMI afronden op 1 decimaal en tonen met komma
+onaf = roundTo(gewichttotaal2 / lengtekwad, 1);
+document.index.uitslag.value = formatBE(onaf, 1);
+
+if (onaf < 10)
+{alert("Voer geldige waarden in.");
+document.index.reset(); 
+return}
+
+else {
+
+if (onaf < 18.5)
+{tekst = "U heeft ondergewicht.";
+}
+
+else {
+
+if (onaf < 25)
+{tekst = "Uw heeft een normaal gewicht.";
+}
+
+else {
+
+if (onaf < 27)
+{tekst = "U heeft licht overgewicht.";
+}
+
+else {
+
+if (onaf < 30)
+{tekst = "U heeft matig overgewicht.";
+}
+
+else {
+
+if (onaf < 40)
+{tekst = "U heeft ernstig overgewicht.";
+}
+
+else
+{ document.index.reset();
+alert("Voer geldige waarden in")
+return }
+
+}}}}}}}
+
+ideaal1 = lengtekwad * 18.5
+ideaal2 = lengtekwad * 25
+
+// Ideaal bereik afronden op 1 decimaal
+ideaal1 = roundTo(ideaal1, 1)
+ideaal2 = roundTo(ideaal2, 1)
+
+// Weergave met komma i.p.v. punt
+const ideaal1Str = formatBE(ideaal1, 1);
+const ideaal2Str = formatBE(ideaal2, 1);
+
+document.index.ideaal.value = tekst + " Uw ideale gewicht ligt tussen " + ideaal1Str + " en " + ideaal2Str + " kilogram."
+}
+</script>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%">
+  <tr> 
+    <td height="31" colspan="3"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" height="31">
+        <tr> 
+          <td width="169"><img src="images/topleft.gif" width="169" height="31"></td>
+          <td background="images/topmiddel.gif">&nbsp;</td>
+          <td width="24"><img src="images/topright.gif" width="24" height="31"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr> 
+    <td width="169" align="center" valign="top" background="images/middelbarmiddel.gif" rowspan="2"> 
+      <table width="169" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td height="40" background="images/middelbarmiddel.gif">&nbsp;</td>
+        </tr>
+        <tr> 
+          <td><img src="images/middelbardown.gif" width="169" height="19"></td>
+        </tr>
+        <tr> 
+          <td><img src="images/middelbartop.gif" width="169" height="18"></td>
+        </tr>
+        <tr> 
+          <td background="images/middelbarmiddel.gif"> 
+            <div align="center" class="menuKop">BMI berekenen</div>
+          </td>
+        </tr>
+        <tr> 
+          <td><img src="images/middelbardown.gif" width="169" height="19"></td>
+        </tr>
+	<tr> 
+          <td><img src="images/middelbartop.gif" width="169" height="18"></td>
+        </tr>
+              </table>
+    </td>
+    <td rowspan="2" align="left" valign="top"> 
+      <p class="siteKop">BMI berekenen</p>
+      <p class="siteBrood">Hier kunt u uw Body Mass Index berekenen.</p> 
+      <form name="index">
+        <table border="1" cellspacing="0" bgcolor="#F7DE00" bordercolor="#80A738" cellpadding="0" width="430">
+          <tr> 
+            <td align="center" width="215" class="siteQuetelet"><font face="arial" size="2"> 
+              <font face="Verdana, Arial, Helvetica, sans-serif" class="siteQuetelet">Type 
+              hier uw lengte in</font><font face="Verdana, Arial, Helvetica, sans-serif" class="siteQuetelet">:</font><br>
+              <input type="text" size="1" maxlength="1" name="lengte">
+              <b>,</b> 
+              <input type="text" size="2" maxlength="2" name="lengtedec">
+              m<br>
+              <font face="Verdana, Arial, Helvetica, sans-serif" class="siteQuetelet">Type 
+              hier uw gewicht in:</font><br>
+              <input type="text" size="3" maxlength="3" name="gewicht">
+              <b>,</b> 
+              <input type="text" size="1" maxlength="1" name="gewichtdec">
+              kg<br>
+              <br>
+              <input type="button" value="Bereken mijn BMI" onClick="gewicht_bekijken()" name="button">
+              &nbsp; 
+              <input type="reset" value="Wis" name="reset">
+              </font></td>
+            <td align="center" width="215"><font face="arial" size="2"> <font face="Verdana, Arial, Helvetica, sans-serif" class="siteQuetelet">Uw 
+              BMI is:</font>&nbsp;&nbsp; 
+              <input type="text" size="2" name="uitslag">
+              <br>
+              <br>
+              <textarea name="ideaal" rows="5" cols="22" wrap="physical" scrol="no"></textarea>
+              </font></td>
+          </tr>
+        </table>
+      </form>
+      <p class="siteBrood">De BMI-waarde geeft slechts een algemene indicatie en houdt geen rekening met factoren zoals leeftijd, geslacht, spiermassa, lichaamssamenstelling of medische voorgeschiedenis. Het is daarom geen volledig beeld van je gezondheid. Voor persoonlijk advies neem je best contact op met een arts of erkende gezondheidsprofessional.</p>
+    </td>
+    <td width="169" align="center" valign="top" background="images/middelbarmiddel.gif"> 
+      <table width="169" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="169" height="75"><a href="hoofd.htm"><img src="images/logo.gif" width="169" height="75" border="0"></a></td>
+        </tr>
+        <tr>
+          <td height="18" width="169"><img src="images/middelbartop.gif" width="169" height="18"></td>
+        </tr>
+                <tr>
+                  </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="169" align="center" valign="bottom" height="14" background="images/middelbarmiddel.gif"><img src="images/middelbardowncut.gif" width="169" height="14"></td>
+  </tr>
+  <tr> 
+    <td height="31" colspan="3"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" height="31">
+        <tr> 
+          <td width="169"><img src="images/downleft.gif" width="169" height="31"></td>
+          <td background="images/downmiddel.gif">&nbsp;</td>
+          <td width="24"><img src="images/downright.gif" width="23" height="31"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

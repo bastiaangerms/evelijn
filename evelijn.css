@@ -1,0 +1,8 @@
+.menuKop {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px; font-style: normal; line-height: normal; font-weight: bold}
+.menuLink { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; font-style: normal; line-height: normal; font-weight: bold; text-decoration: none; color: #000000}
+.menuText { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; font-style: normal; line-height: normal; font-weight: normal; text-decoration: none; color: #000000}
+.siteKop {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold}
+.siteBrood { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: normal; color: #000000; text-align: justify}
+a:hover {  text-decoration: underline}
+.siteSubKop { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: bold }
+.siteQuetelet { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: normal; color: #000000}
